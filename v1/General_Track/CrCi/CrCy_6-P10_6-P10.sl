@@ -18,10 +18,10 @@
 )
  
 (synth-fun Imp ((k1 Bool) (k2 Bool) (k3 Bool) (k4 Bool)) Int
- ((Start Int (+ (ite d0 1 0)
+ ((Start Int ((+ (ite d0 1 0)
              (+ (ite d0 2 0)
              (+ (ite d0 4 0)
-                (ite d0 8 0)))))
+                (ite d0 8 0))))))
  (d0 Bool ( (and d1 d1) (or d1 d1) (xor d1 d1) (not d1) ) )
  (d1 Bool ( (and d2 d2) (or d2 d2) (xor d2 d2) (not d2) ) )
  (d2 Bool ( (and d3 d3) (or d3 d3) (xor d3 d3) (not d3) ) )
