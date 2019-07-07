@@ -12,15 +12,17 @@ whenever you discover something like this.
 
 ```
 .
-|--comp                 < the "official" SyGuS-Comp benchmarks
+|--comp                     < the "official" SyGuS-Comp benchmarks
 |   |-- 2017
 :   :
 |   `-- 20XX
-|-- lib                 < latest snapshot of all benchmarks
+|
+|-- lib                     < latest snapshot of all benchmarks
 |   |-- X_Track
 :   :
 |   `-- Y_Track
-`-- lib-nonconforming   < valid benchmarks that do not conform to track restrictions
+|
+`-- lib-nonconforming       < valid benchmarks that do not conform to track restrictions
     |-- X_Track
     :
     `-- Y_Track
