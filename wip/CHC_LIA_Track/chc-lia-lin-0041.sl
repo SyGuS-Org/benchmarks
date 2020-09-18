@@ -1,0 +1,30 @@
+(set-logic CHC_LIA)
+
+(set-info :source CHC Constraint Logic: QF_LIA Contains non-linear Horn clauses: false)
+(synth-fun ULTIMATE.start_L10 ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(synth-fun ULTIMATE.start_L7 ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(synth-fun ULTIMATE.start_L8 ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(synth-fun ULTIMATE.start_ULTIMATE.startFINAL ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(synth-fun ULTIMATE.start_ULTIMATE.startENTRY ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(synth-fun ULTIMATE.start_L7-2 ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(synth-fun ULTIMATE.start_ULTIMATE.startEXIT ((x_0 Int) (x_1 Int) (x_2 Bool)) Bool)
+
+(constraint (forall ((hhv_ULTIMATE.start_L7_0_Int Int) (hhv_ULTIMATE.start_L7_1_Int Int) (hhv_ULTIMATE.start_L7_2_Bool Bool) (hbv_ULTIMATE.start_ULTIMATE.startENTRY_0_Int Int) (hbv_ULTIMATE.start_ULTIMATE.startENTRY_1_Int Int) (hbv_ULTIMATE.start_ULTIMATE.startENTRY_2_Bool Bool)) (=> (ULTIMATE.start_ULTIMATE.startENTRY hhv_ULTIMATE.start_L7_0_Int hbv_ULTIMATE.start_ULTIMATE.startENTRY_1_Int hhv_ULTIMATE.start_L7_2_Bool) (ULTIMATE.start_L7 hhv_ULTIMATE.start_L7_0_Int hhv_ULTIMATE.start_L7_1_Int hhv_ULTIMATE.start_L7_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_L8_0_Int Int) (hhv_ULTIMATE.start_L8_1_Int Int) (hhv_ULTIMATE.start_L8_2_Bool Bool) (hbv_ULTIMATE.start_L7_0_Int Int) (hbv_ULTIMATE.start_L7_1_Int Int) (hbv_ULTIMATE.start_L7_2_Bool Bool)) (=> (and hhv_ULTIMATE.start_L8_2_Bool (ULTIMATE.start_L7 hhv_ULTIMATE.start_L8_0_Int hhv_ULTIMATE.start_L8_1_Int hhv_ULTIMATE.start_L8_2_Bool)) (ULTIMATE.start_L8 hhv_ULTIMATE.start_L8_0_Int hhv_ULTIMATE.start_L8_1_Int hhv_ULTIMATE.start_L8_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_L7-2_0_Int Int) (hhv_ULTIMATE.start_L7-2_1_Int Int) (hhv_ULTIMATE.start_L7-2_2_Bool Bool) (hbv_ULTIMATE.start_L7_0_Int Int) (hbv_ULTIMATE.start_L7_1_Int Int) (hbv_ULTIMATE.start_L7_2_Bool Bool)) (=> (ULTIMATE.start_L7 hhv_ULTIMATE.start_L7-2_0_Int hhv_ULTIMATE.start_L7-2_1_Int hhv_ULTIMATE.start_L7-2_2_Bool) (ULTIMATE.start_L7-2 hhv_ULTIMATE.start_L7-2_0_Int hhv_ULTIMATE.start_L7-2_1_Int hhv_ULTIMATE.start_L7-2_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool Bool) (hbv_ULTIMATE.start_L8_0_Int Int) (hbv_ULTIMATE.start_L8_1_Int Int) (hbv_ULTIMATE.start_L8_2_Bool Bool)) (=> (and (ULTIMATE.start_L8 hhv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int hbv_ULTIMATE.start_L8_2_Bool) hhv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool) (ULTIMATE.start_ULTIMATE.startEXIT hhv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_L7-2_0_Int Int) (hhv_ULTIMATE.start_L7-2_1_Int Int) (hhv_ULTIMATE.start_L7-2_2_Bool Bool) (hbv_ULTIMATE.start_L8_0_Int Int) (hbv_ULTIMATE.start_L8_1_Int Int) (hbv_ULTIMATE.start_L8_2_Bool Bool)) (=> (and hhv_ULTIMATE.start_L7-2_2_Bool (ULTIMATE.start_L8 hhv_ULTIMATE.start_L7-2_0_Int hhv_ULTIMATE.start_L7-2_1_Int hhv_ULTIMATE.start_L7-2_2_Bool)) (ULTIMATE.start_L7-2 hhv_ULTIMATE.start_L7-2_0_Int hhv_ULTIMATE.start_L7-2_1_Int hhv_ULTIMATE.start_L7-2_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_L10_0_Int Int) (hhv_ULTIMATE.start_L10_1_Int Int) (hhv_ULTIMATE.start_L10_2_Bool Bool) (hbv_ULTIMATE.start_L7-2_0_Int Int) (hbv_ULTIMATE.start_L7-2_1_Int Int) (hbv_ULTIMATE.start_L7-2_2_Bool Bool)) (=> (and (ULTIMATE.start_L7-2 hhv_ULTIMATE.start_L10_0_Int hbv_ULTIMATE.start_L7-2_1_Int hhv_ULTIMATE.start_L10_2_Bool) (or hhv_ULTIMATE.start_L10_2_Bool (= hhv_ULTIMATE.start_L10_1_Int 0))) (ULTIMATE.start_L10 hhv_ULTIMATE.start_L10_0_Int hhv_ULTIMATE.start_L10_1_Int hhv_ULTIMATE.start_L10_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_ULTIMATE.startFINAL_0_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startFINAL_1_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startFINAL_2_Bool Bool) (hbv_ULTIMATE.start_L10_0_Int Int) (hbv_ULTIMATE.start_L10_1_Int Int) (hbv_ULTIMATE.start_L10_2_Bool Bool)) (=> (and (or (= hhv_ULTIMATE.start_ULTIMATE.startFINAL_0_Int hhv_ULTIMATE.start_ULTIMATE.startFINAL_1_Int) hhv_ULTIMATE.start_ULTIMATE.startFINAL_2_Bool) (ULTIMATE.start_L10 hbv_ULTIMATE.start_L10_0_Int hhv_ULTIMATE.start_ULTIMATE.startFINAL_1_Int hhv_ULTIMATE.start_ULTIMATE.startFINAL_2_Bool)) (ULTIMATE.start_ULTIMATE.startFINAL hhv_ULTIMATE.start_ULTIMATE.startFINAL_0_Int hhv_ULTIMATE.start_ULTIMATE.startFINAL_1_Int hhv_ULTIMATE.start_ULTIMATE.startFINAL_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool Bool) (hbv_ULTIMATE.start_ULTIMATE.startFINAL_0_Int Int) (hbv_ULTIMATE.start_ULTIMATE.startFINAL_1_Int Int) (hbv_ULTIMATE.start_ULTIMATE.startFINAL_2_Bool Bool)) (=> (ULTIMATE.start_ULTIMATE.startFINAL hhv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool) (ULTIMATE.start_ULTIMATE.startEXIT hhv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int hhv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool))))
+(constraint (forall ((hhv_ULTIMATE.start_ULTIMATE.startENTRY_0_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startENTRY_1_Int Int) (hhv_ULTIMATE.start_ULTIMATE.startENTRY_2_Bool Bool)) (=> (not hhv_ULTIMATE.start_ULTIMATE.startENTRY_2_Bool) (ULTIMATE.start_ULTIMATE.startENTRY hhv_ULTIMATE.start_ULTIMATE.startENTRY_0_Int hhv_ULTIMATE.start_ULTIMATE.startENTRY_1_Int hhv_ULTIMATE.start_ULTIMATE.startENTRY_2_Bool))))
+(constraint (forall ((hbv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int Int) (hbv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int Int) (hbv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool Bool)) (=> (and (ULTIMATE.start_ULTIMATE.startEXIT hbv_ULTIMATE.start_ULTIMATE.startEXIT_0_Int hbv_ULTIMATE.start_ULTIMATE.startEXIT_1_Int hbv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool) hbv_ULTIMATE.start_ULTIMATE.startEXIT_2_Bool) false)))
+
+(check-synth)
+

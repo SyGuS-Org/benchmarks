@@ -1,0 +1,15 @@
+(set-logic CHC_LIA)
+
+(synth-fun cleaned_symbol_0 ((x_0 Int) (x_1 Int)) Bool)
+
+(synth-fun cleaned_symbol_1 ((x_0 Int) (x_1 Int) (x_2 Int)) Bool)
+
+(constraint (forall ((cleaned_symbol_2 Int) (cleaned_symbol_3 Int) (cleaned_symbol_4 Int) (cleaned_symbol_5 Int)) (=> (and (= cleaned_symbol_2 1) (= cleaned_symbol_3 cleaned_symbol_4) (cleaned_symbol_0 cleaned_symbol_4 cleaned_symbol_2) true) (cleaned_symbol_0 cleaned_symbol_3 cleaned_symbol_5))))
+(constraint (forall ((cleaned_symbol_6 Int) (cleaned_symbol_7 Int) (cleaned_symbol_8 Int) (cleaned_symbol_9 Int) (cleaned_symbol_10 Int) (cleaned_symbol_11 Int) (cleaned_symbol_12 Int)) (let ((a!1 (and (= (not (= 0 cleaned_symbol_6)) (= cleaned_symbol_7 0)) (= (not (= 0 cleaned_symbol_8)) (= cleaned_symbol_9 0)) (= cleaned_symbol_10 1) (= cleaned_symbol_11 cleaned_symbol_12) (not (not (= 0 cleaned_symbol_8))) (not (= 0 cleaned_symbol_6)) true true (cleaned_symbol_0 cleaned_symbol_12 cleaned_symbol_10)))) (=> a!1 (cleaned_symbol_1 cleaned_symbol_11 cleaned_symbol_7 cleaned_symbol_9)))))
+(constraint (forall ((cleaned_symbol_8 Int) (cleaned_symbol_9 Int) (cleaned_symbol_13 Int) (cleaned_symbol_14 Int) (cleaned_symbol_7 Int) (cleaned_symbol_15 Int) (cleaned_symbol_16 Int)) (let ((a!1 (and (= (not (= 0 cleaned_symbol_8)) (= cleaned_symbol_9 0)) (= cleaned_symbol_13 1) (= (not (= 0 cleaned_symbol_14)) (= cleaned_symbol_7 0)) (= cleaned_symbol_15 cleaned_symbol_16) (not (not (= 0 cleaned_symbol_14))) (not (= 0 cleaned_symbol_8)) true true (cleaned_symbol_0 cleaned_symbol_16 cleaned_symbol_13)))) (=> a!1 (cleaned_symbol_1 cleaned_symbol_15 cleaned_symbol_7 cleaned_symbol_9)))))
+(constraint (forall ((cleaned_symbol_17 Int) (cleaned_symbol_7 Int) (cleaned_symbol_18 Int) (cleaned_symbol_9 Int) (cleaned_symbol_6 Int) (cleaned_symbol_8 Int) (cleaned_symbol_19 Int) (cleaned_symbol_20 Int)) (let ((a!1 (and (= cleaned_symbol_17 (- cleaned_symbol_7 1)) (= cleaned_symbol_18 (- cleaned_symbol_9 1)) (= (not (= 0 cleaned_symbol_6)) (= cleaned_symbol_7 0)) (= (not (= 0 cleaned_symbol_8)) (= cleaned_symbol_9 0)) (= cleaned_symbol_19 (+ 1 cleaned_symbol_20)) (not (not (= 0 cleaned_symbol_6))) (not (not (= 0 cleaned_symbol_8))) (cleaned_symbol_1 cleaned_symbol_20 cleaned_symbol_17 cleaned_symbol_18) true true))) (=> a!1 (cleaned_symbol_1 cleaned_symbol_19 cleaned_symbol_7 cleaned_symbol_9)))))
+(constraint (forall ((cleaned_symbol_8 Int) (cleaned_symbol_9 Int) (cleaned_symbol_14 Int) (cleaned_symbol_7 Int) (cleaned_symbol_21 Int)) (let ((a!1 (and (= (not (= 0 cleaned_symbol_8)) (= cleaned_symbol_9 0)) (= (not (= 0 cleaned_symbol_14)) (= cleaned_symbol_7 0)) (= cleaned_symbol_21 0) (not (= 0 cleaned_symbol_8)) (not (= 0 cleaned_symbol_14)) true true))) (=> a!1 (cleaned_symbol_1 cleaned_symbol_21 cleaned_symbol_7 cleaned_symbol_9)))))
+(constraint (forall ((cleaned_symbol_22 Int) (cleaned_symbol_23 Int) (cleaned_symbol_24 Int)) (let ((a!1 (and (= (not (= 0 cleaned_symbol_22)) (= cleaned_symbol_23 cleaned_symbol_24)) (not (not (= 0 cleaned_symbol_22))) (cleaned_symbol_1 cleaned_symbol_23 cleaned_symbol_24 cleaned_symbol_24)))) (=> a!1 false))))
+
+(check-synth)
+
