@@ -1,29 +1,18 @@
-
 (set-logic BV)
 
-(define-fun ehad ((x (BitVec 64))) (BitVec 64) (bvlshr x #x0000000000000001))
-(define-fun arba ((x (BitVec 64))) (BitVec 64) (bvlshr x #x0000000000000004))
-(define-fun shesh ((x (BitVec 64))) (BitVec 64) (bvlshr x #x0000000000000010))
-(define-fun smol ((x (BitVec 64))) (BitVec 64) (bvshl x #x0000000000000001))
-(define-fun im ((x (BitVec 64)) (y (BitVec 64)) (z (BitVec 64))) (BitVec 64) (ite (= x #x0000000000000001) y z))
-
-(synth-fun f ( (x (BitVec 64))) (BitVec 64)
-(
-
-(Start (BitVec 64) (#x0000000000000000 #x0000000000000001 x (bvnot Start)
-                    (smol Start)
- 		    (ehad Start)
-		    (arba Start)
-		    (shesh Start)
-		    (bvand Start Start)
-		    (bvor Start Start)
-		    (bvxor Start Start)
-		    (bvadd Start Start)
-		    (im Start Start Start)
- ))
-)
-)
-
+(define-fun ehad ((x (_ BitVec 64))) (_ BitVec 64)
+    (bvlshr x #x0000000000000001))
+(define-fun arba ((x (_ BitVec 64))) (_ BitVec 64)
+    (bvlshr x #x0000000000000004))
+(define-fun shesh ((x (_ BitVec 64))) (_ BitVec 64)
+    (bvlshr x #x0000000000000010))
+(define-fun smol ((x (_ BitVec 64))) (_ BitVec 64)
+    (bvshl x #x0000000000000001))
+(define-fun im ((x (_ BitVec 64)) (y (_ BitVec 64)) (z (_ BitVec 64))) (_ BitVec 64)
+    (ite (= x #x0000000000000001) y z))
+(synth-fun f ((x (_ BitVec 64))) (_ BitVec 64)
+    ((Start (_ BitVec 64)))
+    ((Start (_ BitVec 64) (#x0000000000000000 #x0000000000000001 x (bvnot Start) (smol Start) (ehad Start) (arba Start) (shesh Start) (bvand Start Start) (bvor Start Start) (bvxor Start Start) (bvadd Start Start) (im Start Start Start)))))
 
 (constraint (= (f #xdc184aecec21e8e4) #x383095d9d843d1c8))
 (constraint (= (f #x75c1348cab0ed798) #x00003ae09a465588))
@@ -1025,4 +1014,6 @@
 (constraint (= (f #x214ab6895e2986c3) #x42956d12bc530d86))
 (constraint (= (f #xede3e1d167d918c3) #x000076f1f0e8b3ed))
 (constraint (= (f #x595137a3a6a896e6) #xb2a26f474d512dcc))
+
 (check-synth)
+

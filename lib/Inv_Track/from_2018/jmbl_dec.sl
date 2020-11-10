@@ -2,17 +2,14 @@
 
 (synth-inv InvF ((x Int)))
 
-(declare-primed-var x Int)
-
 (define-fun PreF ((x Int)) Bool
-(= x 100))
-
+    (= x 100))
 (define-fun TransF ((x Int) (x! Int)) Bool
-(and (> x 0) (= x! (- x 1))))
-
+    (and (> x 0) (= x! (- x 1))))
 (define-fun PostF ((x Int)) Bool
-(not (and (<= x 0) (not (= x 0)))))
+    (not (and (<= x 0) (not (= x 0)))))
 
 (inv-constraint InvF PreF TransF PostF)
 
 (check-synth)
+

@@ -1,5 +1,7 @@
 (set-logic LIA)
-(synth-fun findIdx ( (y1 Int) (y2 Int) (y3 Int) (y4 Int) (y5 Int) (y6 Int) (k1 Int)) Int )
+
+(synth-fun findIdx ((y1 Int) (y2 Int) (y3 Int) (y4 Int) (y5 Int) (y6 Int) (k1 Int)) Int)
+
 (declare-var x1 Int)
 (declare-var x2 Int)
 (declare-var x3 Int)
@@ -14,4 +16,6 @@
 (constraint (=> (and (< x1 x2) (and (< x2 x3) (and (< x3 x4) (and (< x4 x5) (< x5 x6))))) (=> (and (> k x3) (< k x4)) (= (findIdx x1 x2 x3 x4 x5 x6 k) 3))))
 (constraint (=> (and (< x1 x2) (and (< x2 x3) (and (< x3 x4) (and (< x4 x5) (< x5 x6))))) (=> (and (> k x4) (< k x5)) (= (findIdx x1 x2 x3 x4 x5 x6 k) 4))))
 (constraint (=> (and (< x1 x2) (and (< x2 x3) (and (< x3 x4) (and (< x4 x5) (< x5 x6))))) (=> (and (> k x5) (< k x6)) (= (findIdx x1 x2 x3 x4 x5 x6 k) 5))))
+
 (check-synth)
+

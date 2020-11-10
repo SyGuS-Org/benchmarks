@@ -1,5 +1,7 @@
 (set-logic LIA)
-(synth-fun findIdx ( (y1 Int) (y2 Int) (y3 Int) (y4 Int) (y5 Int) (y6 Int) (y7 Int) (y8 Int) (y9 Int) (y10 Int) (y11 Int) (y12 Int) (y13 Int) (k1 Int)) Int )
+
+(synth-fun findIdx ((y1 Int) (y2 Int) (y3 Int) (y4 Int) (y5 Int) (y6 Int) (y7 Int) (y8 Int) (y9 Int) (y10 Int) (y11 Int) (y12 Int) (y13 Int) (k1 Int)) Int)
+
 (declare-var x1 Int)
 (declare-var x2 Int)
 (declare-var x3 Int)
@@ -28,4 +30,6 @@
 (constraint (=> (and (< x1 x2) (and (< x2 x3) (and (< x3 x4) (and (< x4 x5) (and (< x5 x6) (and (< x6 x7) (and (< x7 x8) (and (< x8 x9) (and (< x9 x10) (and (< x10 x11) (and (< x11 x12) (< x12 x13)))))))))))) (=> (and (> k x10) (< k x11)) (= (findIdx x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 k) 10))))
 (constraint (=> (and (< x1 x2) (and (< x2 x3) (and (< x3 x4) (and (< x4 x5) (and (< x5 x6) (and (< x6 x7) (and (< x7 x8) (and (< x8 x9) (and (< x9 x10) (and (< x10 x11) (and (< x11 x12) (< x12 x13)))))))))))) (=> (and (> k x11) (< k x12)) (= (findIdx x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 k) 11))))
 (constraint (=> (and (< x1 x2) (and (< x2 x3) (and (< x3 x4) (and (< x4 x5) (and (< x5 x6) (and (< x6 x7) (and (< x7 x8) (and (< x8 x9) (and (< x9 x10) (and (< x10 x11) (and (< x11 x12) (< x12 x13)))))))))))) (=> (and (> k x12) (< k x13)) (= (findIdx x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 k) 12))))
+
 (check-synth)
+
