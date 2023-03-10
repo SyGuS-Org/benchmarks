@@ -1,0 +1,73 @@
+(set-logic LIA)
+(define-fun get-y ((currPoint Int)) Int (ite (< currPoint 5) 0 (ite (< currPoint 10) 1 (ite (< currPoint 15) 2 (ite (< currPoint 20) 3 4)))))
+(define-fun get-x ((currPoint Int)) Int (- currPoint (ite (< currPoint 5) 0 (ite (< currPoint 10) 5 (ite (< currPoint 15) 10 (ite (< currPoint 20) 15 20))))))
+(define-fun safe ((state Int)) Bool (and (>= state 0) (< state 25)(not (= state 7))(not (= state 23))))
+(define-fun interpret-move ((currPoint Int) (move Int)) Int
+    ;move left
+    (ite (= move 0) (ite
+        (or
+        (< (+ (get-x currPoint) (- 1)) 0)
+        (>= (+ (get-x currPoint) (- 1)) 4))
+        currPoint (+ currPoint (- 1)))
+    ;move down
+    (ite (= move 1) (ite (or (<= (+ (get-y currPoint) 1) 0) (>= (+ (get-y currPoint) 1) 5)) currPoint (+ currPoint 5))
+    ;move right
+    (ite (= move 2) (ite (or (<= (+ (get-x currPoint) 1) 0) (>= (+ (get-x currPoint) 1) 5)) currPoint (+ currPoint 1))
+    ;move up
+    (ite (= move 3) (ite (or (< (+ (get-y currPoint) (- 1)) 0) (>= (+ (get-y currPoint) (- 1)) 5)) currPoint (+ currPoint (- 5)))
+    currPoint)))))
+(synth-fun move ((currPoint Int)) Int
+    ((Start Int) (MoveId Int) (CondInt Int) (StartBool Bool))
+    ((Start Int (
+        MoveId
+        (ite StartBool Start Start)))
+        (MoveId Int (0
+        1
+        2
+        3
+        4
+        ))
+    (CondInt Int (
+        (get-y currPoint)
+        (get-x currPoint)
+        (- 1)
+        0
+        1
+        2
+        3
+        4
+    ))
+    (StartBool Bool ((and StartBool StartBool)
+        (or StartBool StartBool)
+        (not StartBool)
+        (<= CondInt CondInt)
+        (= CondInt CondInt)))))
+    (declare-var pos0 Int)
+    (declare-var pos1 Int)
+    (declare-var pos2 Int)
+    (declare-var pos3 Int)
+    (declare-var pos4 Int)
+    (declare-var pos5 Int)
+    (declare-var pos6 Int)
+    (declare-var pos7 Int)
+    (declare-var pos8 Int)
+    (declare-var pos9 Int)
+    (declare-var pos10 Int)
+
+    (constraint
+    (=>
+    (and (= pos0 0)
+         (= pos1 (interpret-move pos0 (move pos0)))
+         (= pos2 (interpret-move pos1 (move pos1)))
+         (= pos3 (interpret-move pos2 (move pos2)))
+         (= pos4 (interpret-move pos3 (move pos3)))
+         (= pos5 (interpret-move pos4 (move pos4)))
+         (= pos6 (interpret-move pos5 (move pos5)))
+         (= pos7 (interpret-move pos6 (move pos6)))
+         (= pos8 (interpret-move pos7 (move pos7)))
+         (= pos9 (interpret-move pos8 (move pos8)))
+         (= pos10 (interpret-move pos9 (move pos9)))
+    )
+    (and (= pos10 24)
+    (safe pos0)(safe pos1)(safe pos2)(safe pos3)(safe pos4)(safe pos5)(safe pos6)(safe pos7)(safe pos8)(safe pos9)(safe pos10))))
+(check-synth)
