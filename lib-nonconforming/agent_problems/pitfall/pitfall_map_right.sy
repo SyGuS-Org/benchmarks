@@ -1,0 +1,152 @@
+(set-logic LIA)
+
+(define-fun wall-left ((curr-position Int)) Bool
+    (or (= curr-position (- 6)) (= curr-position (- 9)) (= curr-position (- 10)) (= curr-position (- 11)) (= curr-position (- 12)) (= curr-position (- 14)) (= curr-position 4) ))
+
+(define-fun wall-right ((curr-position Int)) Bool
+    (or (= curr-position (- 5)) (= curr-position (- 13)) (= curr-position 0) (= curr-position 1) ))
+
+(define-fun ladder ((curr-position Int)) Bool
+    (or (= curr-position (- 6)) (= curr-position (- 9)) (= curr-position (- 10)) (= curr-position (- 11)) (= curr-position (- 12)) (= curr-position (- 14)) (= curr-position 4) (= curr-position (- 5)) (= curr-position (- 13)) (= curr-position 0) (= curr-position 1) ))
+
+(define-fun treasure ((curr-position Int)) Bool
+    (or (= curr-position (- 17)) (= curr-position 6)))
+
+(define-fun next-position ((curr-position Int) (underground Bool) (way Int)) Int
+    (ite (= way 0) curr-position
+    (ite (and (=> underground (ladder curr-position)) (= way 1)) (+ curr-position 1)
+    (ite (and (=> (not underground) (ladder curr-position)) (not (wall-right curr-position)) (= way 2)) (+ curr-position 3)
+    (ite (and (=> (not underground) (ladder curr-position)) (not (wall-left curr-position)) (= way 3)) (+ curr-position (- 3))
+    (ite (and (=> underground (ladder curr-position)) (= way 4)) (+ curr-position (- 1))
+    curr-position))))))
+
+(define-fun next-state ((curr-position Int) (underground Bool) (way Int)) Bool
+    (ite (= way 0) underground
+    (ite (and (=> underground (ladder curr-position)) (= way 1)) false
+    (ite (and (=> (not underground) (ladder curr-position)) (not (wall-right curr-position)) (= way 2)) true
+    (ite (and (=> (not underground) (ladder curr-position)) (not (wall-left curr-position)) (= way 3)) true
+    (ite (and (=> underground (ladder curr-position)) (= way 4)) false
+    underground))))))
+
+(synth-fun move ((curr-position Int) (underground Bool)) Int
+    ((Start Int) (Travel Int) (MoveId Int) (CondInt Int) (StartBool Bool))
+    ((Start Int (
+        (ite (treasure curr-position) 0 Travel)))
+    (Travel Int (
+        MoveId
+        (ite StartBool Travel Travel)
+        ))
+    (MoveId Int (0
+        1
+        2
+        3
+        4
+        ))
+    (CondInt Int (
+        curr-position
+        (- 1) (- 2) (- 3) (- 4) (- 5) (- 6) (- 7) (- 8) (- 9) (- 10)
+        (- 11) (- 12) (- 13) (- 14) (- 15) (- 16) (- 17)
+        0 1 2 3 4 5
+    ))
+    (StartBool Bool ((and StartBool StartBool)
+        underground
+        (wall-left curr-position)
+        (wall-right curr-position)
+        (ladder curr-position)
+        (or StartBool StartBool)
+        (not StartBool)
+        (<= CondInt CondInt)
+        (= CondInt CondInt)))))
+
+    (declare-var pos0 Int)
+    (declare-var under0 Bool)
+    (declare-var mov0 Int)
+    (declare-var pos1 Int)
+    (declare-var under1 Bool)
+    (declare-var mov1 Int)
+    (declare-var pos2 Int)
+    (declare-var under2 Bool)
+    (declare-var mov2 Int)
+    (declare-var pos3 Int)
+    (declare-var under3 Bool)
+    (declare-var mov3 Int)
+    (declare-var pos4 Int)
+    (declare-var under4 Bool)
+    (declare-var mov4 Int)
+    (declare-var pos5 Int)
+    (declare-var under5 Bool)
+    (declare-var mov5 Int)
+    (declare-var pos6 Int)
+    (declare-var under6 Bool)
+    (declare-var mov6 Int)
+    (declare-var pos7 Int)
+    (declare-var under7 Bool)
+    (declare-var mov7 Int)
+    (declare-var pos8 Int)
+    (declare-var under8 Bool)
+    (declare-var mov8 Int)
+    (declare-var pos9 Int)
+    (declare-var under9 Bool)
+    (declare-var mov9 Int)
+    (declare-var pos10 Int)
+    (declare-var under10 Bool)
+    (declare-var mov10 Int)
+    (declare-var pos11 Int)
+    (declare-var under11 Bool)
+    (declare-var mov11 Int)
+    (declare-var pos12 Int)
+    (declare-var under12 Bool)
+    (declare-var mov12 Int)
+    (declare-var pos13 Int)
+    (declare-var under13 Bool)
+    (declare-var mov13 Int)
+    (declare-var pos14 Int)
+    (declare-var under14 Bool)
+    (declare-var mov14 Int)
+    (declare-var pos15 Int)
+    (declare-var under15 Bool)
+    (declare-var mov15 Int)
+    (declare-var pos16 Int)
+    (declare-var under16 Bool)
+    (declare-var mov16 Int)
+    (declare-var pos17 Int)
+    (declare-var under17 Bool)
+    (declare-var mov17 Int)
+    (declare-var pos18 Int)
+    (declare-var under18 Bool)
+    (declare-var mov18 Int)
+    (declare-var pos19 Int)
+    (declare-var under19 Bool)
+    (declare-var mov19 Int)
+    (declare-var pos20 Int)
+    (declare-var under20 Bool)
+    (declare-var mov20 Int)
+
+    (constraint
+    (=>
+    (and (= pos0 0) (not under0) (= mov0 (move pos0 under0))
+         (= pos1 (next-position pos0 under0 mov0)) (= under1 (next-state pos0 under0 mov0)) (= mov1 (move pos1 under1))
+         (= pos2 (next-position pos1 under1 mov1)) (= under2 (next-state pos1 under1 mov1)) (= mov2 (move pos2 under2))
+         (= pos3 (next-position pos2 under2 mov2)) (= under3 (next-state pos2 under2 mov2)) (= mov3 (move pos3 under3))
+         (= pos4 (next-position pos3 under3 mov3)) (= under4 (next-state pos3 under3 mov3)) (= mov4 (move pos4 under4))
+         (= pos5 (next-position pos4 under4 mov4)) (= under5 (next-state pos4 under4 mov4)) (= mov5 (move pos5 under5))
+         (= pos6 (next-position pos5 under5 mov5)) (= under6 (next-state pos5 under5 mov5)) (= mov6 (move pos6 under6))
+         (= pos7 (next-position pos6 under6 mov6)) (= under7 (next-state pos6 under6 mov6)) (= mov7 (move pos7 under7))
+         (= pos8 (next-position pos7 under7 mov7)) (= under8 (next-state pos7 under7 mov7)) (= mov8 (move pos8 under8))
+         (= pos9 (next-position pos8 under8 mov8)) (= under9 (next-state pos8 under8 mov8)) (= mov9 (move pos9 under9))
+         (= pos10 (next-position pos9 under9 mov9)) (= under10 (next-state pos9 under9 mov9)) (= mov10 (move pos10 under10))
+         (= pos11 (next-position pos10 under10 mov10)) (= under11 (next-state pos10 under10 mov10)) (= mov11 (move pos11 under11))
+         (= pos12 (next-position pos11 under11 mov11)) (= under12 (next-state pos11 under11 mov11)) (= mov12 (move pos12 under12))
+         (= pos13 (next-position pos12 under12 mov12)) (= under13 (next-state pos12 under12 mov12)) (= mov13 (move pos13 under13))
+         (= pos14 (next-position pos13 under13 mov13)) (= under14 (next-state pos13 under13 mov13)) (= mov14 (move pos14 under14))
+         (= pos15 (next-position pos14 under14 mov14)) (= under15 (next-state pos14 under14 mov14)) (= mov15 (move pos15 under15))
+         (= pos16 (next-position pos15 under15 mov15)) (= under16 (next-state pos15 under15 mov15)) (= mov16 (move pos16 under16))
+         (= pos17 (next-position pos16 under16 mov16)) (= under17 (next-state pos16 under16 mov16)) (= mov17 (move pos17 under17))
+         (= pos18 (next-position pos17 under17 mov17)) (= under18 (next-state pos17 under17 mov17)) (= mov18 (move pos18 under18))
+         (= pos19 (next-position pos18 under18 mov18)) (= under19 (next-state pos18 under18 mov18)) (= mov19 (move pos19 under19))
+         (= pos20 (next-position pos19 under19 mov19)) (= under20 (next-state pos19 under19 mov19)) (= mov20 (move pos20 under20))
+    ) (treasure pos6)))
+
+
+(check-synth)
+

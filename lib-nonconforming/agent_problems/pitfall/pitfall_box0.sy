@@ -1,0 +1,178 @@
+(set-logic LIA)
+
+; up left end
+(define-fun state0 ((three-logs Bool) (move Int)) Int
+    (ite (or (and three-logs (= move 5)) (and (not three-logs) (= move 1))) 1 0))
+
+; up left
+(define-fun state1 ((three-logs Bool) (pit Bool) (quicksand Bool) (crocodile Bool) (ladder Bool) (ladder-and-holes Bool) (swinging-vine Bool) (move Int)) Int
+    (ite (or (and (not pit) ladder (= move 5))
+    (and (or crocodile (and (not pit) ladder-and-holes)) (= move 7))
+    (and (not pit) quicksand (= move 1))) 2
+    (ite (and swinging-vine (= move 5)) 11
+    (ite (or (and three-logs (= move 6)) (and (not three-logs) (= move 3))) 0
+    (ite (or (and ladder (= move 1)) (and ladder-and-holes (= move 5))) 4 1)))))
+
+; up right
+(define-fun state2 ((three-logs Bool) (snake Bool) (pit Bool) (quicksand Bool) (crocodile Bool) (ladder Bool) (ladder-and-holes Bool) (swinging-vine Bool) (move Int)) Int
+    (ite (or (and (not pit) ladder (= move 6))
+    (and (or crocodile (and (not pit) ladder-and-holes)) (= move 7))
+    (and (not pit) quicksand (= move 3))) 1
+    (ite (and swinging-vine (= move 6)) 12
+    (ite (or (and (or three-logs snake) (= move 5)) (and (not (or three-logs snake)) (= move 1))) 3
+    (ite (or (and ladder (= move 3)) (and ladder-and-holes (= move 6))) 5 2)))))
+
+; up right end
+(define-fun state3 ((three-logs Bool) (snake Bool) (move Int)) Int
+    (ite (or (and (or three-logs snake) (= move 6)) (and (not (or three-logs snake)) (= move 3))) 2 3))
+
+; up left middle
+(define-fun state4 ((ladder Bool) (ladder-and-holes Bool) (move Int)) Int
+    (ite (and (or ladder ladder-and-holes) (= move 2)) 6
+    (ite (and (or ladder ladder-and-holes) (= move 5)) 5
+    (ite (or (and ladder (= move 3)) (and ladder-and-holes (= move 6))) 1 4))))
+
+; up right middle
+(define-fun state5 ((ladder Bool) (ladder-and-holes Bool) (move Int)) Int
+    (ite (and (or ladder ladder-and-holes) (= move 2)) 6
+    (ite (or (and ladder (= move 1)) (and ladder-and-holes (= move 5))) 2
+    (ite (or (and ladder (= move 3)) (and ladder-and-holes (= move 6))) 4 5))))
+
+;ladder
+(define-fun state6 ((ladder Bool) (ladder-and-holes Bool) (scorpion Bool) (move Int)) Int
+    (ite (and (or ladder ladder-and-holes) (= move 4)) 5
+    (ite (and (not scorpion) (= move 1)) 9
+    (ite (and (not scorpion) (= move 3)) 8 6))))
+
+;down left end
+(define-fun state7 ((wall-left Bool) (move Int)) Int
+    (ite (and (not wall-left) (= move 1)) 8 7))
+
+;down left
+(define-fun state8 ((wall-left Bool) (ladder Bool) (ladder-and-holes Bool) (scorpion Bool) (move Int)) Int
+    (ite (and (not wall-left) (= move 3)) 7
+    (ite (or (and scorpion (= move 5)) (and (not scorpion) (= move 1))) 9
+    (ite (and (or ladder ladder-and-holes) (= move 4)) 6 8))))
+
+;down right
+(define-fun state9 ((wall-right Bool) (ladder Bool) (ladder-and-holes Bool) (scorpion Bool) (move Int)) Int
+    (ite (and (not wall-right) (= move 1)) 10
+    (ite (or (and scorpion (= move 6)) (and (not scorpion) (= move 3))) 8
+    (ite (and (or ladder ladder-and-holes) (= move 4)) 6 9))))
+
+;down right end
+(define-fun state10 ((wall-right Bool) (move Int)) Int
+    (ite (and (not wall-right) (= move 3)) 9 10))
+
+; swinging-vine left
+(define-fun state11 ((swinging-vine Bool) (move Int)) Int
+    (ite (and swinging-vine (= move 1)) 1
+    (ite (and swinging-vine (= move 0)) 12 11)))
+
+; swinging-vine right
+(define-fun state12 ((swinging-vine Bool) (move Int)) Int
+    (ite (and swinging-vine (= move 2)) 2
+    (ite (and swinging-vine (= move 0)) 11 12)))
+
+(define-fun interpret-move ((curr-state Int) (three-logs Bool) (snake Bool) (pit Bool) (quicksand Bool) (crocodile Bool) (ladder Bool) (ladder-and-holes Bool) (swinging-vine Bool) (scorpion Bool) (wall-left Bool) (wall-right Bool) (move Int)) Int
+    (ite (= curr-state 0) (state0 three-logs move)
+    (ite (= curr-state 1) (state1 three-logs pit quicksand crocodile ladder ladder-and-holes swinging-vine move)
+    (ite (= curr-state 2) (state2 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine move)
+    (ite (= curr-state 3) (state3 three-logs snake move)
+    (ite (= curr-state 4) (state4 ladder ladder-and-holes move)
+    (ite (= curr-state 5) (state5 ladder ladder-and-holes move)
+    (ite (= curr-state 6) (state6 ladder ladder-and-holes scorpion move)
+    (ite (= curr-state 7) (state7 wall-left move)
+    (ite (= curr-state 8) (state8 wall-left ladder ladder-and-holes scorpion move)
+    (ite (= curr-state 9) (state9 wall-left ladder ladder-and-holes scorpion move)
+    (ite (= curr-state 10) (state10 wall-right move)
+    (ite (= curr-state 11) (state11 swinging-vine move)
+    (ite (= curr-state 12) (state12 swinging-vine move) (- 1)
+    ))))))))))))))
+
+(synth-fun move ((curr-state Int)) Int
+    ((Start Int) (MoveId Int))
+    ((Start Int (
+        (ite (= curr-state 0) MoveId
+        (ite (= curr-state 1) MoveId
+        (ite (= curr-state 2) MoveId
+        (ite (= curr-state 3) MoveId
+        (ite (= curr-state 4) MoveId
+        (ite (= curr-state 5) MoveId
+        (ite (= curr-state 6) MoveId
+        (ite (= curr-state 7) MoveId
+        (ite (= curr-state 8) MoveId
+        (ite (= curr-state 9) MoveId
+        (ite (= curr-state 10) MoveId
+        (ite (= curr-state 11) MoveId
+        (ite (= curr-state 12) MoveId (- 1)
+        )))))))))))))))
+        (MoveId Int (0
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        ))
+    ))
+
+    (declare-var pos1 Int)
+    (declare-var pos2 Int)
+    (declare-var pos3 Int)
+    (declare-var pos4 Int)
+    (declare-var pos5 Int)
+    (declare-var pos6 Int)
+    (declare-var pos7 Int)
+    (declare-var pos8 Int)
+    (declare-var pos9 Int)
+    (declare-var pos10 Int)
+    (declare-var pos11 Int)
+    (declare-var pos12 Int)
+
+    (declare-var mov1 Int)
+    (declare-var mov2 Int)
+    (declare-var mov3 Int)
+    (declare-var mov4 Int)
+    (declare-var mov5 Int)
+    (declare-var mov6 Int)
+    (declare-var mov7 Int)
+    (declare-var mov8 Int)
+    (declare-var mov9 Int)
+    (declare-var mov10 Int)
+    (declare-var mov11 Int)
+    (declare-var mov12 Int)
+
+    (declare-var snake Bool)
+    (declare-var swinging-vine Bool)
+    (declare-var scorpion Bool)
+    (declare-var crocodile Bool)
+    (declare-var pit Bool)
+    (declare-var ladder Bool)
+    (declare-var ladder-and-holes Bool)
+    (declare-var wall-left Bool)
+    (declare-var wall-right Bool)
+    (declare-var quicksand Bool)
+    (declare-var three-logs Bool)
+
+    (constraint
+    (=>
+    (and (= pos1 0) (= mov1 (move pos1))
+         (= pos2 (interpret-move pos1 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov1)) (= mov2 (move pos2))
+         (= pos3 (interpret-move pos2 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov2)) (= mov3 (move pos3))
+         (= pos4 (interpret-move pos3 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov3)) (= mov4 (move pos4))
+         (= pos5 (interpret-move pos4 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov4)) (= mov5 (move pos5))
+         (= pos6 (interpret-move pos5 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov5)) (= mov6 (move pos6))
+         (= pos7 (interpret-move pos6 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov6)) (= mov7 (move pos7))
+         (= pos8 (interpret-move pos7 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov7)) (= mov8 (move pos8))
+         (= pos9 (interpret-move pos8 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov8)) (= mov9 (move pos9))
+         (= pos10 (interpret-move pos9 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov9)) (= mov10 (move pos10))
+         (= pos11 (interpret-move pos10 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov10)) (= mov11 (move pos11))
+         (= pos12 (interpret-move pos11 three-logs snake pit quicksand crocodile ladder ladder-and-holes swinging-vine scorpion wall-left wall-right mov11)) (= mov12 (move pos12))
+         snake (not swinging-vine) (not scorpion) (not crocodile) (not pit) ladder (not ladder-and-holes) (not wall-left) wall-right (not quicksand) (not three-logs)
+    ) (= pos12 3)))
+
+
+(check-synth)
+
