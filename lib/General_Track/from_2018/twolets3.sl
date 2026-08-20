@@ -6,7 +6,7 @@
 	   ((Start Int) (CInt Int))
  (
 	   (Start Int (
-	   	      (let ((y CInt) (z CInt) (w CInt)) (+ (+ (+ y x) z) w))
+	   	      (+ (+ (+ CInt x) CInt) CInt)
 	   	      )
  	   )
 	   (CInt Int (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15))
@@ -18,7 +18,7 @@
 	   ((Start Int) (CInt Int))
  (
 	   (Start Int (x
-	   	      (let ((y Start) (z CInt) (w CInt)) (+ (+ (+ y x) z) w))
+	   	      (+ (+ (+ Start x) CInt) CInt)
 	   	      )
  	   )
 	   (CInt Int (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15))

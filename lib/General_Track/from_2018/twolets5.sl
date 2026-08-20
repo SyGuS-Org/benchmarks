@@ -6,8 +6,7 @@
 	   ((Start Int) (CInt Int))
  (
 	   (Start Int (
-	   	      (let ((y1 CInt) (y2 CInt) (y3 CInt) (y4 CInt) (y5 CInt)) 
-	   	      (+ (+ (+ (+ y1 y2) y3) y4) y5))
+	   	      (+ (+ (+ (+ CInt CInt) CInt) CInt) CInt)
 	   	      )
  	   )
 	   (CInt Int (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15))
@@ -18,8 +17,7 @@
 	   ((Start Int) (CInt Int))
  (
 	   (Start Int (
-	   	      (let ((y1 CInt) (y2 CInt) (y3 CInt) (y4 CInt) (y5 CInt)) 
-	   	      (+ (+ (+ (+ y1 y2) y3) y4) y5))
+	   	      (+ (+ (+ (+ CInt CInt) CInt) CInt) CInt)
 	   	      )
  	   )
 	   (CInt Int (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15))

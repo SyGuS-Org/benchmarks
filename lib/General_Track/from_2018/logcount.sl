@@ -11,7 +11,7 @@
 	   ((Start (_ BitVec 8)) (ConstBV (_ BitVec 8)))
  (
 	     (Start (_ BitVec 8) ( x
-	     	     	       	 (let ((tmp Start) (m ConstBV) (n ConstBV)) (bvadd (bvand tmp m) (bvand (bvlshr tmp n) m)) )
+	     	     	       	 (bvadd (bvand Start ConstBV) (bvand (bvlshr Start ConstBV) ConstBV))
                 
 		)
 	     )

@@ -40,6 +40,17 @@ restrictions; some subdirectories were merged in from the former
 * `General_Track/uclid5` and `arrays_and_quantifiers` use arrays and
   quantifiers, which no track admits.
 
+## Notes on the 2.7 conversion
+
+SyGuS-IF 2 grammar terms are `(Constant Sort)`, `(Variable Sort)` and plain
+applications, so the `let` terms that older grammars used were eliminated by
+substituting each bound variable with the term it was bound to. This is exact
+wherever a bound variable occurred at most once. In the six
+`General_Track/from_2018/logcount*.sl` sketches a variable occurred twice, so
+the let was expressing sharing that a context-free grammar cannot express;
+inlining there yields a strictly larger grammar that still contains every term
+the original could produce.
+
 ## Known deviations
 
 * `General_Track/uclid5/dining-philosophers-no-deadlock-system-{assign,if}-{1,2}.ucl.sl`
