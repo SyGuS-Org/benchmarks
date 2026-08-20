@@ -4,7 +4,8 @@
 (set-logic LIA)
 
 (synth-fun max3 ((x Int) (y Int) (z Int)) Int
-    ((Start Int (x
+    ((Start Int) (StartBool Bool))
+ ((Start Int (x
                  y
                  z
                  0

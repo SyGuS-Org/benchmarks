@@ -1,4 +1,4 @@
-(set-logic SAT)
+(set-logic UF)
 
 (define-fun __node_init_switch_0 ((switch.usr.init_a_0 Bool) (switch.usr.on_a_0 Bool) (switch.usr.off_a_0 Bool) (switch.usr.value_a_0 Bool) (switch.res.init_flag_a_0 Bool)) Bool
     (and (= switch.usr.value_a_0 (ite switch.usr.on_a_0 true (ite switch.usr.off_a_0 false switch.usr.init_a_0))) switch.res.init_flag_a_0))

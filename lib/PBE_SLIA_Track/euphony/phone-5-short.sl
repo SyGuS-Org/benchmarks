@@ -1,11 +1,12 @@
 (set-logic SLIA)
 (synth-fun f ((name String)) String
-    ((Start String (ntString))
+    ((Start String) (ntString String) (ntInt Int) (ntBool Bool))
+ ((Start String (ntString))
      (ntString String (name " " "+" "-" "."
 (str.++ ntString ntString)
 (str.replace ntString ntString ntString)
 (str.at ntString ntInt)
-(int.to.str ntInt)
+(str.from_int ntInt)
 (ite ntBool ntString ntString)
 (str.substr ntString ntInt ntInt)
 ))
@@ -13,7 +14,7 @@
 (+ ntInt ntInt)
 (- ntInt ntInt)
 (str.len ntString)
-(str.to.int ntString)
+(str.to_int ntString)
 (str.indexof ntString ntString ntInt)
 ))
 (ntBool Bool (true false

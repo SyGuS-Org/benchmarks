@@ -1,7 +1,8 @@
 (set-logic SLIA)
  
 (synth-fun f ((col1 String) (col2 String)) String
-    ((Start String (ntString))
+    ((Start String) (ntString String) (ntInt Int) (ntBool Bool))
+ ((Start String (ntString))
      (ntString String (col1 col2 "New York" " " "," "AK" "AZ" "AR" "CA" "CO" "CT" "DE" "FL" "GA" "HI" "ID" "IL" "IN" "IA" "KS" "KY" "LA" "ME" "MD" "MA" "MI" "MN" "MS" "MO" "MT" "NE" "NV" "NH" "NJ" "NM" "NY" "NC" "ND" "OH" "OK" "OR" "PA" "RI" "SC" "SD" "TN" "TX" "UT" "VT" "VA" "WA" "WV" "WI" "USA"
                        (str.++ ntString ntString)
                        (str.replace ntString ntString ntString)

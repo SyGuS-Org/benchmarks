@@ -1,7 +1,8 @@
 (set-logic SLIA)
  
 (synth-fun f ((name String)) String
-    ((Start String (ntString))
+    ((Start String) (ntString String) (ntInt Int) (ntBool Bool))
+ ((Start String (ntString))
      (ntString String (name " " "."
                        (str.++ ntString ntString)
                        (str.replace ntString ntString ntString)

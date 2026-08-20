@@ -1,4 +1,4 @@
-(set-logic SAT)
+(set-logic UF)
 
 (define-fun __node_init_top_0 ((top.usr.OK_a_0 Bool) (top.res.init_flag_a_0 Bool) (top.impl.usr.a_a_0 Bool) (top.impl.usr.b_a_0 Bool) (top.impl.usr.c_a_0 Bool)) Bool
     (and (= top.impl.usr.c_a_0 false) (= top.impl.usr.b_a_0 false) (= top.impl.usr.a_a_0 true) (= top.usr.OK_a_0 (and (or (or (or (or (not top.impl.usr.a_a_0) (and (not top.impl.usr.b_a_0) top.impl.usr.c_a_0)) (and (and (not top.impl.usr.a_a_0) top.impl.usr.b_a_0) (not top.impl.usr.c_a_0))) (and (and top.impl.usr.a_a_0 (not top.impl.usr.b_a_0)) (not top.impl.usr.c_a_0))) (and (and top.impl.usr.a_a_0 top.impl.usr.b_a_0) top.impl.usr.c_a_0)) (not (and (and top.impl.usr.a_a_0 top.impl.usr.b_a_0) top.impl.usr.c_a_0)))) top.res.init_flag_a_0))

@@ -1,4 +1,4 @@
-(set-logic LIA)
+(set-logic NIA)
 
 (define-fun __node_init_AND_0 ((AND.usr.a_0_a_0 Bool) (AND.usr.a_1_a_0 Bool) (AND.usr.a_2_a_0 Bool) (AND.usr.a_3_a_0 Bool) (AND.usr.AND_a_0 Bool) (AND.res.init_flag_a_0 Bool)) Bool
     (and (= AND.usr.AND_a_0 (and (and (and AND.usr.a_0_a_0 AND.usr.a_1_a_0) AND.usr.a_2_a_0) AND.usr.a_3_a_0)) AND.res.init_flag_a_0))

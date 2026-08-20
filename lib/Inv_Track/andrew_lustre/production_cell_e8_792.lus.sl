@@ -1,4 +1,4 @@
-(set-logic SAT)
+(set-logic UF)
 
 (define-fun __node_init_sustain_0 ((sustain.usr.on_a_0 Bool) (sustain.usr.off_a_0 Bool) (sustain.usr.s_a_0 Bool) (sustain.res.init_flag_a_0 Bool)) Bool
     (and (= sustain.usr.s_a_0 sustain.usr.on_a_0) sustain.res.init_flag_a_0))

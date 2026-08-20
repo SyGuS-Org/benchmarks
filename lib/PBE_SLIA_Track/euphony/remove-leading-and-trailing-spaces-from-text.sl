@@ -2,6 +2,7 @@
 ; (str.++ (ite (str.prefixof " " _arg_0) "" (str.at _arg_0 0)) (str.substr (str.replace (str.replace (str.replace (str.replace (str.replace _arg_0 (str.++ " " " ") " ") (str.++ " " " ") " ") (str.++ " " " ") " ") (str.++ " " " ") " ") (str.++ " " " ") " ") 1 (str.len _arg_0)))
 (set-logic SLIA)
 (synth-fun f ((_arg_0 String)) String 
+ ((Start String) (ntString String) (ntInt Int) (ntBool Bool))
  ( (Start String (ntString)) 
  (ntString String (
 	_arg_0
@@ -9,17 +10,17 @@
 	(str.++ ntString ntString) 
 	(str.replace ntString ntString ntString) 
 	(str.at ntString ntInt)
-	(int.to.str ntInt)
+	(str.from_int ntInt)
 	(ite ntBool ntString ntString)
 	(str.substr ntString ntInt ntInt)
 )) 
  (ntInt Int (
 	
-	1 0 -1
+	1 0 (- 1)
 	(+ ntInt ntInt)
 	(- ntInt ntInt)
 	(str.len ntString)
-	(str.to.int ntString)
+	(str.to_int ntString)
 	(ite ntBool ntInt ntInt)
 	(str.indexof ntString ntString ntInt)
 )) 

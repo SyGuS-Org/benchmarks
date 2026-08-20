@@ -8,7 +8,7 @@
     ((Start Int))
     ((Start Int ((Constant Int)))))
 
-(constraint (= (fc) (+ (fb) 10)))
+(constraint (= fc (+ fb 10)))
 
 (check-synth)
 
