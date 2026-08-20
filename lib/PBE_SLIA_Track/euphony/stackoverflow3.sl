@@ -1,6 +1,7 @@
 ; https=//stackoverflow.com/questions/26875613/return-all-text-to-the-right-of-last-numeric-digit-in-strings/26876794%26876794
 (set-logic SLIA)
 (synth-fun f ((_arg_0 String)) String 
+ ((Start String) (ntString String) (ntInt Int) (ntBool Bool))
  ( (Start String (ntString)) 
  (ntString String (
 	_arg_0
@@ -8,17 +9,17 @@
 	(str.++ ntString ntString) 
 	(str.replace ntString ntString ntString) 
 	(str.at ntString ntInt)
-	(int.to.str ntInt)
+	(str.from_int ntInt)
 	(ite ntBool ntString ntString)
 	(str.substr ntString ntInt ntInt)
 )) 
  (ntInt Int (
 	
-	1 0 -1 1 2 3
+	1 0 (- 1) 1 2 3
 	(+ ntInt ntInt)
 	(- ntInt ntInt)
 	(str.len ntString)
-	(str.to.int ntString)
+	(str.to_int ntString)
 	(ite ntBool ntInt ntInt)
 	(str.indexof ntString ntString ntInt)
 )) 
